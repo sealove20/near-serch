@@ -1,41 +1,41 @@
 export interface GithubResponse {
-    incomplete_results: Boolean
+    incomplete_results: boolean
     items: GithubUser[]
-    total_count: Number
+    total_count: number
 }
 
 export interface GithubUser {
-    login: String
-    id: Number
-    node_id: String
-    avatar_url: String
-    gravatar_id: String
-    url: String
-    html_url: String
-    followers_url: String
-    following_url: String
-    gists_url: String
-    starred_url: String
-    subscriptions_url: String
-    organizations_url: String
-    repos_url: String
-    events_url: String
-    received_events_url: String
-    type: String
-    site_admin: Boolean
-    score: Number
+    login: string
+    id: number
+    node_id: string
+    avatar_url: string
+    gravatar_id: string
+    url: string
+    html_url: string
+    followers_url: string
+    following_url: string
+    gists_url: string
+    starred_url: string
+    subscriptions_url: string
+    organizations_url: string
+    repos_url: string
+    events_url: string
+    received_events_url: string
+    type: string
+    site_admin: boolean
+    score: number
 }
 
 export interface ParsedGithubUser {
-    incompleteResults: Boolean
-    totalCount: Number
+    incompleteResults: boolean
+    totalCount: number
     users: ParsedUsers[]
 }
 
 export interface ParsedUsers {
-    avatarUrl: String
-    htmlUrl: String
-    id: Number
-    login: String
-    siteAdmin: Boolean
+    avatarUrl: string
+    htmlUrl: string
+    id: number
+    login: string
+    siteAdmin: boolean
 }

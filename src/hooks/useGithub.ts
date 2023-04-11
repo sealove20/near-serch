@@ -6,7 +6,7 @@ export const useGithub = () => {
   const [loading, setLoading] = useState(false)
   const [users, setUsers] = useState<ParsedGithubUser>()
 
-  const fetchUsers = (userName: String) => {
+  const fetchUsers = (userName: string) => {
     setLoading(true)
     return GithubService.getUsers(userName)
       .then(setUsers)
