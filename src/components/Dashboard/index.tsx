@@ -6,14 +6,15 @@ import { Layout } from '../Layout'
 import { Button } from '@/Button'
 import { useState } from 'react'
 import { useGithub } from '@/hooks/useGithub'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export const Dashboard: React.FC = () => {
 	const [displayValue, setDisplayValue] = useState('')
-	const { fetchUsers } = useGithub()
+	const { fetchUsers, users } = useGithub()
 
-	const onSubmit = (event: any) => {
-		const userName = event.target.value
-		fetchUsers(userName)
+	const onSubmit = () => {
+		fetchUsers(displayValue)
 	}
 
 	return (
@@ -23,11 +24,25 @@ export const Dashboard: React.FC = () => {
 				<Input displayValue={displayValue} setDisplayValue={setDisplayValue} />
 				<Button onSubmit={onSubmit} />
 			</section>
-			<Card>
-				<div />
-				<p>User Name</p>
-				<p>isAdmin</p>
-			</Card>
+			<p>Total de perfis encontrados {users?.totalCount}</p>
+			<div>
+				{users
+					? users?.users?.map((user, index) => (
+							<Link key={index} href={`/user/${user?.login}`}>
+								<Card customStyle={styles.card_custom_style}>
+									<Image
+										src={user.avatarUrl}
+										alt="user avatar photo"
+										width={50}
+										height={50}
+									/>
+									<p>{user.login}</p>
+									<p>{user.siteAdmin ? 'ADMIN' : 'NOT ADMIN'}</p>
+								</Card>
+							</Link>
+					  ))
+					: null}
+			</div>
 		</Layout>
 	)
 }
