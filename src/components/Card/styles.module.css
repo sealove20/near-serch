@@ -1,5 +1,6 @@
 .card {
     display: flex;
+    box-sizing: border-box;
     width: 400px;
     height: 100px;
     justify-content: space-around;
