@@ -3,10 +3,12 @@ import { GithubResponse, GithubUser } from "../types/github"
 export const GithubParser = {
     list: (userData: GithubResponse) => {
         const { incomplete_results, items, total_count } = userData
+        const hasTooMany = total_count > 10
+        const parsedUsers = items?.map(GithubParser.instance)
     
         return {
             incompleteResults: incomplete_results,
-            users: items.map(GithubParser.instance),
+            users: hasTooMany ? parsedUsers.slice(0, 10) : parsedUsers,
             totalCount: total_count
         }
     },
