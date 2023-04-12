@@ -1,12 +1,4 @@
 .card {
-    display: flex;
-    box-sizing: border-box;
-    width: 400px;
-    height: 100px;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 10px;
-    cursor: pointer;
     -webkit-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
     box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
