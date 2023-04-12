@@ -25,24 +25,22 @@ export const Dashboard: React.FC = () => {
 				<Button onSubmit={onSubmit} />
 			</section>
 			<p>Total de perfis encontrados {users?.totalCount}</p>
-			<div>
-				{users
-					? users?.users?.map((user, index) => (
-							<Link key={index} href={`/user/${user?.login}`}>
-								<Card customStyle={styles.card_custom_style}>
-									<Image
-										src={user.avatarUrl}
-										alt="user avatar photo"
-										width={50}
-										height={50}
-									/>
-									<p>{user.login}</p>
-									<p>{user.siteAdmin ? 'ADMIN' : 'NOT ADMIN'}</p>
-								</Card>
-							</Link>
-					  ))
-					: null}
-			</div>
+			{users
+				? users?.users?.map((user, index) => (
+						<Link key={index} href={`/user/${user?.login}`}>
+							<Card customStyle={styles.card_custom_style}>
+								<Image
+									src={user.avatarUrl}
+									alt="user avatar photo"
+									width={50}
+									height={50}
+								/>
+								<p>{user.login}</p>
+								<p>{user.siteAdmin ? 'ADMIN' : 'NOT ADMIN'}</p>
+							</Card>
+						</Link>
+				  ))
+				: null}
 		</Layout>
 	)
 }
