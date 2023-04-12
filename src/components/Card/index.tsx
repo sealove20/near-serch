@@ -5,6 +5,6 @@ type Props = {
 	customStyle?: string
 }
 
-export const Card: React.FC<Props> = ({ children, customStyle }) => {
+export const Card: React.FC<Props> = ({ children, customStyle = '' }) => {
 	return <div className={`${styles.card} ${customStyle}`}>{children}</div>
 }
