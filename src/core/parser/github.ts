@@ -1,4 +1,4 @@
-import { GithubResponse, GithubUser } from "../types/github"
+import { GithubResponse, GithubUser, GithubUserResponse } from "../types/github"
 
 export const GithubParser = {
     list: (userData: GithubResponse) => {
@@ -25,6 +25,16 @@ export const GithubParser = {
             avatarUrl: avatar_url,
             login,
             siteAdmin: site_admin,
+            id,
+            htmlUrl: html_url
+        }
+    },
+    user: (userData: GithubUserResponse) => {
+        const { avatar_url, login, id, html_url } = userData
+
+        return {
+            avatarUrl: avatar_url,
+            login,
             id,
             htmlUrl: html_url
         }
