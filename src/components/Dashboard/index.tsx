@@ -1,16 +1,19 @@
 import styles from './styles.module.css'
 
+import githubIcon from '../../../public/github-mark.svg'
+import backIcon from '../../../public/back.png'
+import { Button } from '@/components/Button'
+import { useGithub } from '@/hooks/useGithub'
+import { ParsedUsers } from '@/core/types/github'
 import { Card } from '../Card'
 import { Input } from '../Input'
 import { Layout } from '../Layout'
-import { Button } from '@/components/Button'
 import { useState } from 'react'
-import { useGithub } from '@/hooks/useGithub'
 import Image from 'next/image'
 import { Loading } from '../Loading'
-import { ParsedUsers } from '@/core/types/github'
 import { ModalPage } from '../ModalPage'
 import { UserTitle } from '../UserTitle'
+
 
 export const Dashboard: React.FC = () => {
 	const [displayValue, setDisplayValue] = useState('')
@@ -63,7 +66,7 @@ export const Dashboard: React.FC = () => {
 							height={50}
 						/>
 						<UserTitle title="Username" content={user.login} />
-						<UserTitle title="Role" content={user.siteAdmin ? 'ADMIN' : 'NOT ADMIN'} />
+						<UserTitle title="Role" content={user.siteAdmin ? 'Admin' : 'Not an admin'} />
 					</Card>
 				))
 			) : (
@@ -74,7 +77,14 @@ export const Dashboard: React.FC = () => {
 				onModalClose={onModalClose}
 			>
 				<Button customStyle={styles.back_button} onClick={onModalClose}>
-					VOLTAR
+					<Image
+						priority
+						src={backIcon}
+						alt="Follow they on github"
+						height={16}
+						width={16}
+					/>
+					<p className={styles.back_button_content}>Voltar</p>
 				</Button>
 				<Layout>
 					{isLoading ? (
@@ -89,9 +99,18 @@ export const Dashboard: React.FC = () => {
 							/>
 							<UserTitle title="Username" content={userData?.login} />
 							<UserTitle title="User id" content={userData?.id} />
-							<a className={styles.info} href={userData?.htmlUrl} target="_blank">
-								<span className={styles.user_page}>Página do usuário</span>
-							</a>
+							<Button onClick={onModalClose} customStyle={`${styles.info} ${styles.github_button}`}>
+								<a href={userData?.htmlUrl} target="_blank">
+									Página do usuário
+								</a>
+								<Image
+									priority
+									src={githubIcon}
+									alt="Follow they on github"
+									height={20}
+									width={20}
+								/>
+							</Button>
 						</>
 					)}
 				</Layout>

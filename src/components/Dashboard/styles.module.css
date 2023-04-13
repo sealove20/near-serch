@@ -11,7 +11,7 @@
 .card_custom_style {
     display: flex;
     box-sizing: border-box;
-    width: 400px;
+    width: 500px;
     height: 100px;
     justify-content: space-around;
     align-items: center;
@@ -34,10 +34,20 @@
     margin-top: 1rem;
 }
 
-.title {
-    font-weight: bold;
+.github_button {
+    width: 15rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 2.5rem;
 }
 
-.user_page {
-    color: #0000EE
+.back_button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.back_button_content {
+    margin-left: 5px;
 }
