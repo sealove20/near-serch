@@ -1,7 +1,7 @@
 import styles from './styles.module.css'
 
 type Props = {
-	children: string
+	children: React.ReactNode
 	onClick: () => void
 	customStyle?: string
 	disabled?: boolean
