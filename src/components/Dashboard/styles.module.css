@@ -1,5 +1,11 @@
 .dashboard_title {
     text-align: center;
+    font-size: 2rem;
+}
+
+.input_custom_style {
+    margin: 2rem 0;
+    padding: 0 1rem;
 }
 
 .card_custom_style {

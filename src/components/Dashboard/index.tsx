@@ -21,7 +21,11 @@ export const Dashboard: React.FC = () => {
 		<Layout>
 			<section>
 				<h1 className={styles.dashboard_title}>Buscar perfil</h1>
-				<Input displayValue={displayValue} setDisplayValue={setDisplayValue} />
+				<Input
+					displayValue={displayValue}
+					setDisplayValue={setDisplayValue}
+					customStyle={styles.input_custom_style}
+				/>
 				<Button onSubmit={onSubmit} />
 			</section>
 			<p>Total de perfis encontrados {users?.totalCount}</p>
