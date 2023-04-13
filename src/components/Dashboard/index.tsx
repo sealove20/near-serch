@@ -10,6 +10,7 @@ import Image from 'next/image'
 import { Loading } from '../Loading'
 import { ParsedUsers } from '@/core/types/github'
 import { ModalPage } from '../ModalPage'
+import { UserTitle } from '../UserTitle'
 
 export const Dashboard: React.FC = () => {
 	const [displayValue, setDisplayValue] = useState('')
@@ -61,8 +62,8 @@ export const Dashboard: React.FC = () => {
 							width={50}
 							height={50}
 						/>
-						<p>{user.login}</p>
-						<p>{user.siteAdmin ? 'ADMIN' : 'NOT ADMIN'}</p>
+						<UserTitle title="Username" content={user.login} />
+						<UserTitle title="Role" content={user.siteAdmin ? 'ADMIN' : 'NOT ADMIN'} />
 					</Card>
 				))
 			) : (
@@ -86,12 +87,8 @@ export const Dashboard: React.FC = () => {
 								width={150}
 								height={150}
 							/>
-							<p className={styles.info}>
-								<span className={styles.title}>Username:</span> {userData?.login}
-							</p>
-							<p className={styles.info}>
-								<span className={styles.title}>User id:</span> {userData?.id}
-							</p>
+							<UserTitle title="Username" content={userData?.login} />
+							<UserTitle title="User id" content={userData?.id} />
 							<a className={styles.info} href={userData?.htmlUrl} target="_blank">
 								<span className={styles.user_page}>Página do usuário</span>
 							</a>
