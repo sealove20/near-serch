@@ -21,14 +21,18 @@ export const Dashboard: React.FC = () => {
 		<Layout>
 			<section>
 				<h1 className={styles.dashboard_title}>Buscar perfil</h1>
-				<Input
-					displayValue={displayValue}
-					setDisplayValue={setDisplayValue}
-					customStyle={styles.input_custom_style}
-				/>
-				<Button onSubmit={onSubmit} />
+				<div>
+					<Input
+						displayValue={displayValue}
+						setDisplayValue={setDisplayValue}
+						customStyle={styles.input_custom_style}
+					/>
+					<Button
+						onSubmit={onSubmit}
+						customStyle={styles.button_custom_style}
+					/>
+				</div>
 			</section>
-			<p>Total de perfis encontrados {users?.totalCount}</p>
 			{users
 				? users?.users?.map((user, index) => (
 						<Link key={index} href={`/user/${user?.login}`}>
