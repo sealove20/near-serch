@@ -4,15 +4,21 @@ type Props = {
 	children: string
 	onClick: any
 	customStyle?: string
+	disabled?: boolean
 }
 
 export const Button: React.FC<Props> = ({
 	children,
 	onClick,
 	customStyle = '',
+	disabled,
 }) => {
 	return (
-		<button className={`${styles.button} ${customStyle}`} onClick={onClick}>
+		<button
+			className={`${styles.button} ${customStyle}`}
+			onClick={onClick}
+			disabled={disabled}
+		>
 			{children}
 		</button>
 	)

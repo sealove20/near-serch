@@ -12,7 +12,7 @@ import { Loading } from '../Loading'
 
 export const Dashboard: React.FC = () => {
 	const [displayValue, setDisplayValue] = useState('')
-	const { fetchUsers, users, loading } = useGithub()
+	const { fetchUsers, users, isLoading } = useGithub()
 
 	const onSubmit = () => {
 		fetchUsers(displayValue)
@@ -28,12 +28,14 @@ export const Dashboard: React.FC = () => {
 						setDisplayValue={setDisplayValue}
 						customStyle={styles.input_custom_style}
 					/>
-					<Button onClick={onSubmit}>Buscar</Button>
+					<Button onClick={onSubmit} disabled={displayValue.length === 0}>
+						Buscar
+					</Button>
 				</div>
 			</section>
-			{loading ? (
+			{isLoading ? (
 				<Loading />
-			) : users ? (
+			) : users?.totalCount > 0 ? (
 				users?.users?.map((user, index) => (
 					<Link key={index} href={`/user/${user?.login}`}>
 						<Card customStyle={styles.card_custom_style}>
@@ -48,7 +50,9 @@ export const Dashboard: React.FC = () => {
 						</Card>
 					</Link>
 				))
-			) : null}
+			) : (
+				<p>Usuários não encontrados</p>
+			)}
 		</Layout>
 	)
 }
