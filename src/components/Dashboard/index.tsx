@@ -14,12 +14,13 @@ import { ModalPage } from '../ModalPage'
 export const Dashboard: React.FC = () => {
 	const [displayValue, setDisplayValue] = useState('')
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [userData, setUserData] = useState<ParsedUsers>()
 	const { fetchUsers, users, isLoading } = useGithub()
+	const hasUsers = users?.totalCount! > 0
 
 	const onModalOpen = () => setIsModalOpen(true)
 	const onModalClose = () => setIsModalOpen(false)
 
+	const [userData, setUserData] = useState<ParsedUsers>()
 	const handleModalOpen = (user: ParsedUsers) => {
 		setUserData(user)
 		onModalOpen()
@@ -47,7 +48,7 @@ export const Dashboard: React.FC = () => {
 			</section>
 			{isLoading ? (
 				<Loading />
-			) : users?.totalCount > 0 ? (
+			) : hasUsers ? (
 				users?.users?.map(user => (
 					<Card
 						key={user.id}
