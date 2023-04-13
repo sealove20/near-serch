@@ -1,9 +1,5 @@
 .button {
     height: 2rem;
-}
-
-.button {
-    display: inline-block;
     border: none;
     border-radius: 0.25rem;
     padding: 0 2rem;
@@ -31,9 +27,9 @@
 }
 
 .button:disabled,
-.button[disabled]{
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
-  cursor: inherit;
+.button[disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    cursor: inherit;
 }
