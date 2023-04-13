@@ -7,12 +7,23 @@ import { Button } from '@/components/Button'
 import { useState } from 'react'
 import { useGithub } from '@/hooks/useGithub'
 import Image from 'next/image'
-import Link from 'next/link'
 import { Loading } from '../Loading'
+import { ParsedUsers } from '@/core/types/github'
+import { ModalPage } from '../ModalPage'
 
 export const Dashboard: React.FC = () => {
 	const [displayValue, setDisplayValue] = useState('')
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [userData, setUserData] = useState<ParsedUsers>()
 	const { fetchUsers, users, isLoading } = useGithub()
+
+	const onModalOpen = () => setIsModalOpen(true)
+	const onModalClose = () => setIsModalOpen(false)
+
+	const handleModalOpen = (user: ParsedUsers) => {
+		setUserData(user)
+		onModalOpen()
+	}
 
 	const onSubmit = () => {
 		fetchUsers(displayValue)
@@ -36,23 +47,56 @@ export const Dashboard: React.FC = () => {
 			{isLoading ? (
 				<Loading />
 			) : users?.totalCount > 0 ? (
-				users?.users?.map((user, index) => (
-					<Link key={index} href={`/user/${user?.login}`}>
-						<Card customStyle={styles.card_custom_style}>
-							<Image
-								src={user.avatarUrl}
-								alt="user avatar photo"
-								width={50}
-								height={50}
-							/>
-							<p>{user.login}</p>
-							<p>{user.siteAdmin ? 'ADMIN' : 'NOT ADMIN'}</p>
-						</Card>
-					</Link>
+				users?.users?.map(user => (
+					<Card
+						key={user.id}
+						customStyle={styles.card_custom_style}
+						onClick={() => handleModalOpen(user)}
+					>
+						<Image
+							src={user.avatarUrl}
+							alt="user avatar photo"
+							width={50}
+							height={50}
+						/>
+						<p>{user.login}</p>
+						<p>{user.siteAdmin ? 'ADMIN' : 'NOT ADMIN'}</p>
+					</Card>
 				))
 			) : (
 				<p>Usuários não encontrados</p>
 			)}
+			<ModalPage
+				isModalOpen={isModalOpen}
+				onModalClose={onModalClose}
+			>
+				<Button customStyle={styles.back_button} onClick={onModalClose}>
+					VOLTAR
+				</Button>
+				<Layout>
+					{isLoading ? (
+						<Loading />
+					) : (
+						<>
+							<Image
+								src={userData?.avatarUrl!}
+								alt="user avatar photo"
+								width={150}
+								height={150}
+							/>
+							<p className={styles.info}>
+								<span className={styles.title}>Username:</span> {userData?.login}
+							</p>
+							<p className={styles.info}>
+								<span className={styles.title}>User id:</span> {userData?.id}
+							</p>
+							<a className={styles.info} href={userData?.htmlUrl} target="_blank">
+								<span className={styles.user_page}>Página do usuário</span>
+							</a>
+						</>
+					)}
+				</Layout>
+			</ModalPage>
 		</Layout>
 	)
 }
