@@ -2,7 +2,7 @@ import styles from './styles.module.css'
 
 type Props = {
 	children: string
-	onClick: any
+	onClick: () => void
 	customStyle?: string
 	disabled?: boolean
 }

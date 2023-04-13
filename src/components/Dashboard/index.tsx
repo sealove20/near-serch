@@ -38,6 +38,7 @@ export const Dashboard: React.FC = () => {
 						displayValue={displayValue}
 						setDisplayValue={setDisplayValue}
 						customStyle={styles.input_custom_style}
+						onSubmit={onSubmit}
 					/>
 					<Button onClick={onSubmit} disabled={displayValue.length === 0}>
 						Buscar
