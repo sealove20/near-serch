@@ -1,14 +1,19 @@
 import styles from './styles.module.css'
 
 type Props = {
-	onSubmit: any
+	children: string
+	onClick: any
 	customStyle?: string
 }
 
-export const Button: React.FC<Props> = ({ onSubmit, customStyle = '' }) => {
+export const Button: React.FC<Props> = ({
+	children,
+	onClick,
+	customStyle = '',
+}) => {
 	return (
-		<button className={`${styles.button} ${customStyle}`} onClick={onSubmit}>
-			Buscar
+		<button className={`${styles.button} ${customStyle}`} onClick={onClick}>
+			{children}
 		</button>
 	)
 }

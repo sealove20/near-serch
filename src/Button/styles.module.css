@@ -1,13 +1,31 @@
 .button {
+    height: 2rem;
+}
+
+.button {
+    display: inline-block;
     border: none;
-    margin: 0;
-    padding: 0;
-    width: auto;
-    overflow: visible;
-    background: transparent;
-    color: inherit;
-    font: inherit;
-    line-height: normal;
-    -webkit-font-smoothing: inherit;
-    -moz-osx-font-smoothing: inherit;
+    border-radius: 0.25rem;
+    padding: 0 2rem;
+    margin-left: 1rem;
+    text-decoration: none;
+    background-color: #0069ed;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+}
+
+.button:hover {
+    background: #0053ba;
+}
+
+.button:focus {
+    outline-offset: -4px;
+}
+
+.button:active {
+    transform: scale(0.99);
 }

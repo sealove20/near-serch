@@ -1,3 +1,6 @@
+import { Button } from '@/Button'
+import styles from './styles.module.css'
+
 import { Layout } from '@/components/Layout'
 import { useGithub } from '@/hooks/useGithub'
 import Image from 'next/image'
@@ -8,7 +11,6 @@ export default function UserPage() {
 	const router = useRouter()
 	const login = router.query.login as string
 	const { fetchUser, user } = useGithub()
-	console.log({ login })
 
 	useEffect(() => {
 		fetchUser(login)
@@ -17,7 +19,9 @@ export default function UserPage() {
 
 	return (
 		<>
-			<p onClick={() => router.back()}>VOLTAR</p>
+			<Button customStyle={styles.back_button} onClick={() => router.back()}>
+				VOLTAR
+			</Button>
 			<Layout>
 				<Image
 					src={user?.avatarUrl!}
@@ -25,10 +29,14 @@ export default function UserPage() {
 					width={150}
 					height={150}
 				/>
-				<p>Username: {user?.login}</p>
-				<p>User id: {user?.id}</p>
-				<a href={user?.htmlUrl} target="_blank">
-					Página do usuário
+				<p className={styles.info}>
+					<span className={styles.title}>Username:</span> {user?.login}
+				</p>
+				<p className={styles.info}>
+					<span className={styles.title}>User id:</span> {user?.id}
+				</p>
+				<a className={styles.info} href={user?.htmlUrl} target="_blank">
+					<span className={styles.user_page}>Página do usuário</span>
 				</a>
 			</Layout>
 		</>

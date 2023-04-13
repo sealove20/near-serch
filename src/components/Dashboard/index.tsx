@@ -21,16 +21,13 @@ export const Dashboard: React.FC = () => {
 		<Layout>
 			<section>
 				<h1 className={styles.dashboard_title}>Buscar perfil</h1>
-				<div>
+				<div className={styles.search_wrapper}>
 					<Input
 						displayValue={displayValue}
 						setDisplayValue={setDisplayValue}
 						customStyle={styles.input_custom_style}
 					/>
-					<Button
-						onSubmit={onSubmit}
-						customStyle={styles.button_custom_style}
-					/>
+					<Button onClick={onSubmit}>Buscar</Button>
 				</div>
 			</section>
 			{users
