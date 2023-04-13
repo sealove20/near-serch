@@ -27,13 +27,13 @@ export const Input: React.FC<Props> = ({
 
 	return (
 		<input
-			type="text"
+			type="search"
 			className={`${styles.input} ${customStyle}`}
 			placeholder="Digite o nome de um usuário"
 			onChange={handleChange}
 			value={displayValue}
 			pattern="[a-zA-Z0-9 ]*$"
-			onKeyDown={event => onKeyDown(event, onSubmit)}
+			onKeyDown={event => displayValue && onKeyDown(event, onSubmit)}
 		/>
 	)
 }
