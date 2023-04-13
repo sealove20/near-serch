@@ -3,26 +3,26 @@ import { ParsedGithubUser, ParsedUser } from '@/core/types/github'
 import { useState } from 'react'
 
 export const useGithub = () => {
-  const [loading, setLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [users, setUsers] = useState<ParsedGithubUser>()
   const [user, setUser] = useState<ParsedUser>()
 
   const fetchUsers = (userName: string) => {
-    setLoading(true)
+    setIsLoading(true)
     return GithubService.getUsers(userName)
       .then(setUsers)
-      .finally(() => setLoading(false))
+      .finally(() => setIsLoading(false))
   }
 
   const fetchUser = (userName: string) => {
-    setLoading(true)
+    setIsLoading(true)
     return GithubService.getUser(userName)
       .then(setUser)
-      .finally(() => setLoading(false))
+      .finally(() => setIsLoading(false))
   }
 
   return {
-    loading,
+    isLoading,
     fetchUsers,
     fetchUser,
     users,
