@@ -34,8 +34,12 @@
     margin-top: 1rem;
 }
 
+.custom_info {
+    margin-top: 1rem;
+}
+
 .github_button {
-    width: 15rem;
+    width: 16rem;
     display: flex;
     justify-content: space-between;
     align-items: center;

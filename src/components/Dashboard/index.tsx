@@ -97,8 +97,8 @@ export const Dashboard: React.FC = () => {
 								width={150}
 								height={150}
 							/>
-							<UserTitle title="Username" content={userData?.login} />
-							<UserTitle title="User id" content={userData?.id} />
+							<UserTitle title="Username" content={userData?.login} customInfoStyle={styles.custom_info} />
+							<UserTitle title="User id" content={userData?.id} customInfoStyle={styles.custom_info} />
 							<Button onClick={onModalClose} customStyle={`${styles.info} ${styles.github_button}`}>
 								<a href={userData?.htmlUrl} target="_blank">
 									Página do usuário
