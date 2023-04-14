@@ -58,6 +58,7 @@ export const Dashboard: React.FC = () => {
 						key={user.id}
 						customStyle={styles.card_custom_style}
 						onClick={() => handleModalOpen(user)}
+						name={user.login}
 					>
 						<Image
 							src={user.avatarUrl}

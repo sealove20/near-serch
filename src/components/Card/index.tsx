@@ -4,8 +4,9 @@ type Props = {
 	children: React.ReactNode
 	customStyle?: string
 	onClick?: () => void
+	name: string
 }
 
-export const Card: React.FC<Props> = ({ children, customStyle = '', onClick, ...rest }) => {
-	return <div className={`${styles.card} ${customStyle}`} {...rest} onClick={onClick}> {children}</div >
+export const Card: React.FC<Props> = ({ children, customStyle = '', onClick, name, ...rest }) => {
+	return <div className={`${styles.card} ${customStyle}`} {...rest} onClick={onClick} data-cy={name}> {children}</div >
 }
