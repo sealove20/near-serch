@@ -71,7 +71,7 @@ export const Dashboard: React.FC = () => {
 					</Card>
 				))
 			) : (
-				<p>Usuários não encontrados</p>
+				<p>Vazio</p>
 			)}
 			<ModalPage
 				isModalOpen={isModalOpen}
