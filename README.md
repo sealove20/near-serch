@@ -2,6 +2,8 @@
 
 Repo for Near Location frontend challenge.
 
+You can access a live version [Here][here]
+
 ## :rocket: Technologies
 
 This project was developed with the following technologies:
@@ -50,6 +52,12 @@ You can run e2e tests using:
 $ npm run e2e
 ```
 
+### CI/CD
+
+The application is deployed on Vercel where a continuous deployment (CD) process is configured to automatically deploy the chosen branch. Before each pull request (PR) is merged into the main branch, a continuous integration (CI) pipeline in CircleCI runs all the tests. If all tests pass, the PR is merged and triggers the deploy pipeline.
+
+By following this process, you ensure that any code changes that make it into the main branch are thoroughly tested and of high quality, and that any deployment to the production environment is done in a controlled and automated way. This helps to reduce the risk of introducing bugs or errors into the live application, and makes it easier to maintain the codebase over time.
+
 [typescript]: https://www.typescriptlang.org/
 [nextjs]: https://nextjs.org/
 [npm]: https://www.npmjs.com/
@@ -58,3 +66,6 @@ $ npm run e2e
 [relay]: https://relay.dev/
 [circleci]: https://circleci.com/
 [storybook]: https://storybook.js.org/
+[vercel]: https://vercel.com/
+[here]: https://near-serch.vercel.app
+
