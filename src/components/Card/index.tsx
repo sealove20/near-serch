@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 type Props = {
 	children: React.ReactNode
 	customStyle?: string
-	onClick: () => void
+	onClick?: () => void
 }
 
 export const Card: React.FC<Props> = ({ children, customStyle = '', onClick, ...rest }) => {
