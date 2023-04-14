@@ -4,7 +4,7 @@ type Props = {
 	children: React.ReactNode
 	customStyle?: string
 	onClick?: () => void
-	name: string
+	name?: string
 }
 
 export const Card: React.FC<Props> = ({ children, customStyle = '', onClick, name, ...rest }) => {
