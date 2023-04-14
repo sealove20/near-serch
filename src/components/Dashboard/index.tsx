@@ -8,7 +8,7 @@ import { ParsedUsers } from '@/core/types/github'
 import { Card } from '../Card'
 import { Input } from '../Input'
 import { Layout } from '../Layout'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import Image from 'next/image'
 import { Loading } from '../Loading'
 import { ModalPage } from '../ModalPage'
@@ -30,9 +30,9 @@ export const Dashboard: React.FC = () => {
 		onModalOpen()
 	}
 
-	const onSubmit = () => {
+	const onSubmit = useCallback(() => {
 		fetchUsers(displayValue)
-	}
+	}, [displayValue, fetchUsers])
 
 	return (
 		<Layout>
